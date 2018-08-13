@@ -104,21 +104,24 @@ translator:
     - xform/(^|[ '])mm/$1M/
     - xform/(^|[ '])nn/$1NG/
     - xform/(^|[ '])aa/$1AA/
+    - xform/(^|[ '])ii/I$1GW/
     - xform/(^|[ '])v/$1NG/
     - xform/(^|[ '])i/$1GW/
     - xform/(^|[ '])q/$1KW/
     - xform/(^|[ '])xx/$1AA/
-    - xform/(^|[ '])nn/$1NG/
     - xform/(^|[ '])aa/$1A/
     - xform/(^|[ '])oo/$1O/
-    - xform/(^|[ '])mm/$1M/
     - xform/(^|[ '])uu/$1U/
     - xform/(^|[ '])y/$1J/
     - xform/(\w)x/$1AA/
     - xform/(\w)y/$1YU/
-    - xform/(\w)v/$1EO/
-    - xform/(\w)v/$1OE/
     - xform/(\w)h/$1AA/
+    - xform/(\w)vg$/$1OENG/
+    - xform/(\w)vi$/$1EOI/
+    - xform/(\w)vn$/$1EON/
+    - xform/(\w)vt$/$1EOT/
+    - xform/(\w)vk$/$1OEK/
+    - xform/(\w)v$/$1OE/
     - xform/(\w)g/$1NG/
     - xlit/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/
 

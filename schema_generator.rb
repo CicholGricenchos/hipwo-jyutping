@@ -87,6 +87,7 @@ class Generator
   def 生成变换韵腹
     韵腹变换.each do |from, to|
       spell "- xform/#{from}/#{to.upcase}/"
+      next if to == 'v'
       translate "- xform/(\\w)#{to}/$1#{from.upcase}/"
     end
   end
@@ -98,6 +99,10 @@ class Generator
   end
 
   def 生成变换韵尾
+    声组合.select{|x| x[1] == 'oe' || x[1] == 'eo'}.map{|x| [x[1], x[2]]}.uniq.each do |x|
+      translate "- xform/(\\w)v#{韵尾变换[x[1]] || x[1]}$/$1#{x[0].upcase}#{x[1]&.upcase}/"
+    end
+
     韵尾变换.each do |from, to|
       spell "- xform/#{from}$/#{to.upcase}/"
       translate "- xform/(\\w)#{to}/$1#{from.upcase}/"
@@ -137,6 +142,7 @@ class Generator
     translate "- xform/(^|[ '])mm/$1M/"
     translate "- xform/(^|[ '])nn/$1NG/"
     translate "- xform/(^|[ '])aa/$1AA/"
+    translate "- xform/(^|[ '])ii/I$1GW/"
   end
 
   def spell line
