@@ -116,14 +116,15 @@ translator:
     - xform/(\w)x/$1AA/
     - xform/(\w)y/$1YU/
     - xform/(\w)h/$1AA/
-    - xform/(\w)vg$/$1OENG/
-    - xform/(\w)vi$/$1EOI/
-    - xform/(\w)vn$/$1EON/
-    - xform/(\w)vt$/$1EOT/
-    - xform/(\w)vk$/$1OEK/
-    - xform/(\w)v$/$1OE/
+    - xform/(\w)vg/$1OENG/
+    - xform/(\w)vi/$1EOI/
+    - xform/(\w)vn/$1EON/
+    - xform/(\w)vt/$1EOT/
+    - xform/(\w)vk/$1OEK/
+    - xform/(\w)v/$1OE/
     - xform/(\w)g/$1NG/
     - xlit/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/
+
 
 punctuator:
   import_preset: default
