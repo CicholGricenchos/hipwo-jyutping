@@ -1,0 +1,134 @@
+schema:
+  schema_id: jyutping_triple
+  name: 粤拼三拼
+  version: "0.0.1"
+  author:
+    - 深渊漫步 <cichol@live.cn>
+  description: |
+    一个26键粤拼三拼方案
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 中文, 西文 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  - name: simplification
+    states: [ 漢字, 汉字 ]
+  - name: ascii_punct
+    states: [ 。，, ．， ]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - reverse_lookup_translator
+    - script_translator
+  filters:
+    - simplifier
+    - uniquifier
+
+speller:
+  alphabet: abcdefghijklmnopqrstuvwxyz
+  delimiter: " '"
+  algebra:
+    - derive/^hng$/HN/
+    - derive/^aa$/AA/
+    - xform/^hng$/HG/
+    - xform/^m$/MM/
+    - xform/^ng$/NN/
+    - xform/^ng/V/
+    - xform/^gw/I/
+    - xform/^kw/Q/
+    - xform/^b/B/
+    - xform/^p/P/
+    - xform/^m/M/
+    - xform/^f/F/
+    - xform/^d/D/
+    - xform/^t/T/
+    - xform/^n/N/
+    - xform/^l/L/
+    - xform/^g/G/
+    - xform/^k/K/
+    - xform/^h/H/
+    - xform/^w/W/
+    - xform/^z/Z/
+    - xform/^c/C/
+    - xform/^s/S/
+    - xform/^j/J/
+    - xform/^aa/XX/
+    - xform/^a/AA/
+    - xform/^o/OO/
+    - xform/^u/UU/
+    - derive/J/Y/
+    - xform/aa/X/
+    - xform/yu/Y/
+    - xform/eo/V/
+    - xform/oe/V/
+    - xform/i/I/
+    - xform/u/U/
+    - xform/e/E/
+    - xform/o/O/
+    - xform/a/A/
+    - derive/X/H/
+    - xform/ng$/G/
+    - xform/i$/I/
+    - xform/u$/U/
+    - xform/m$/M/
+    - xform/n$/N/
+    - xform/p$/P/
+    - xform/t$/T/
+    - xform/k$/K/
+    - xlit/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/
+
+translator:
+  dictionary: jyutping
+  prism: jyutping_triple
+  preedit_format:
+    - xform/(^|[ '])hg/$1HNG/
+    - xform/(^|[ '])hn/$1HNG/
+    - xform/(^|[ '])mm/$1M/
+    - xform/(^|[ '])nn/$1NG/
+    - xform/(^|[ '])aa/$1AA/
+    - xform/(^|[ '])v/$1NG/
+    - xform/(^|[ '])i/$1GW/
+    - xform/(^|[ '])q/$1KW/
+    - xform/(^|[ '])xx/$1AA/
+    - xform/(^|[ '])nn/$1NG/
+    - xform/(^|[ '])aa/$1A/
+    - xform/(^|[ '])oo/$1O/
+    - xform/(^|[ '])mm/$1M/
+    - xform/(^|[ '])uu/$1U/
+    - xform/(^|[ '])y/$1J/
+    - xform/(\w)x/$1AA/
+    - xform/(\w)y/$1YU/
+    - xform/(\w)v/$1EO/
+    - xform/(\w)v/$1OE/
+    - xform/(\w)h/$1AA/
+    - xform/(\w)g/$1NG/
+    - xlit/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/
+
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
+
+recognizer:
+  import_preset: default
+  patterns:
+    reverse_lookup: "`[a-z]*'?$"
