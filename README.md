@@ -3,7 +3,7 @@
 
 键位图
 ======
-![keyboard-layout](http://cichol.qiniudn.com/keyboard-layout.png)
+![keyboard-layout](https://raw.githubusercontent.com/CicholGricenchos/jyutping_triple/master/keyboard-layout.png)
 
 其中每个键的第一、二、三行，分别为声母、韵腹，韵尾。
 
